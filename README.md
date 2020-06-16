@@ -1,8 +1,8 @@
 # What is this?
 This is a proof of concept for an indicator to switch between Ambiance and Suru Dark theme.
 
-This is based from the amazing work of Brian Douglass [Indicator Weather](https://gitlab.com/bhdouglass/indicator-weather)
-Thank you Brian!
+This is based from the amazing work of **Brian Douglass** for [Indicator Weather](https://gitlab.com/bhdouglass/indicator-weather)
+Thank you **Brian**!
 
 # What does it exactly do?
 It modifies the theme in the config file "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
