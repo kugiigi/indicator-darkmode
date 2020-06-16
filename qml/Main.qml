@@ -19,8 +19,8 @@ MainView {
         id: settings
     
         property bool autoDarkMode: false
-        property string startTime
-        property string endTime
+        property string startTime: "19:00"
+        property string endTime: "06:00"
         property int checkInterval: 15
     }
 
