@@ -16,4 +16,4 @@ Enabling Dark Mode from the indicator will switch to the theme "Suru Dark". Disa
 - Suru Dark theme support varies across apps. There are apps that just works while some will only have partial support and some won't even respect it.
 
 # How to compile?
-You can use [clickable](https://clickable-ut.dev) to compile however, I used an older version so the clickable.json file might not work on newer version anymore. Sorry 😅
+You can use [clickable](https://clickable-ut.dev) to compile.
