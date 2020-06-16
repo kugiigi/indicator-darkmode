@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Indicator Dark Mode
+Exec=qmlscene qml/Main.qml
+Icon=assets/icon.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+Name[de_DE]=indicator-darkmode.desktop

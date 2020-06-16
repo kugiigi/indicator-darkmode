@@ -1,0 +1,15 @@
+{
+    "name": "indicator-darkmode.kugiigi",
+    "description": "A basic indicator for switching themes",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Indicator Dark Mode",
+    "hooks": {
+        "indicator-darkmode": {
+            "apparmor": "indicator-darkmode.apparmor",
+            "desktop":  "indicator-darkmode.desktop"
+        }
+    },
+    "version": "1.0",
+    "maintainer": "Kugi Eusebio <kugi_eusebio@protonmail.com>",
+    "framework" : "ubuntu-sdk-16.04"
+}
