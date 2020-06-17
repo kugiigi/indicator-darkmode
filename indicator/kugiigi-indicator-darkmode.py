@@ -32,7 +32,7 @@ class ImmersiveIndicator(object):
     AMBIANCE_TEXT = "Ubuntu.Components.Themes.Ambiance"
     SURUDARK_TEXT = "Ubuntu.Components.Themes.SuruDark"
     ENABLED_ICON = "weather-clear-night-symbolic"
-    DISABLED_ICON = "weather-clear-symbolic"
+    DISABLED_ICON = "night-mode"
     
     config_file = "/home/phablet/.config/indicator-darkmode/indicator-darkmode.conf"  # TODO don't hardcode this
     theme_ini = "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
@@ -65,7 +65,7 @@ class ImmersiveIndicator(object):
         if self.autoSwitchEnabled() == False:
             self.toggleTheme()
         
-        self.update_darkmode()
+        self.update_darkmode(set_timeout=False)
         
     def settings_action_activated(self, action, data):
         logger.debug('settings_action_activated')
@@ -92,7 +92,7 @@ class ImmersiveIndicator(object):
         current_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
         section.append_item(current_menu_item)
         
-        settings_menu_item = Gio.MenuItem.new('Suru Dark Mode Settings', 'indicator.{}'.format(self.SETTINGS_ACTION))
+        settings_menu_item = Gio.MenuItem.new('Suru Dark Mode Settings...', 'indicator.{}'.format(self.SETTINGS_ACTION))
         section.append_item(settings_menu_item)
 
 
@@ -110,7 +110,7 @@ class ImmersiveIndicator(object):
         self.sub_menu.remove(self.MAIN_SECTION)
         self.sub_menu.insert_section(self.MAIN_SECTION, 'Suru Dark Mode', self._create_section())
 
-    def update_darkmode(self): 
+    def update_darkmode(self, set_timeout=True): 
         if self.autoSwitchEnabled() == True:
             currentTheme = self.current_theme()
             startTime = self.startTime().split(':')
@@ -127,14 +127,14 @@ class ImmersiveIndicator(object):
                 or (((reverseLogic == False and (now < start or now > end)) or (reverseLogic == True and now < start and now > end)) and currentTheme != self.AMBIANCE_TEXT):
                 self.toggleTheme()
         
-        # Stop timeout and recreate another so that we get the value of interval minutes in real time
-        GLib.timeout_add_seconds(60 * self.checkInterval(), self.update_darkmode)
-        
         logger.debug('Updated state to: {}'.format(self.current_icon()))
         self.action_group.change_action_state(self.ROOT_ACTION, self.root_state())
         self.action_group.change_action_state(self.CURRENT_ACTION, GLib.Variant.new_boolean(self.current_state()))
         self._update_menu()
-                
+        
+        if set_timeout == True:
+            # Stop timeout and recreate another so that we get the value of interval minutes in real time
+            GLib.timeout_add_seconds(60 * self.checkInterval(), self.update_darkmode)        
         return False
         
     def toggleTheme(self):
@@ -171,7 +171,7 @@ class ImmersiveIndicator(object):
         else:
             vardict.insert_value('visible', GLib.Variant.new_boolean(False))
         
-        vardict.insert_value('title', GLib.Variant.new_string('Dark Mode'))
+        vardict.insert_value('title', GLib.Variant.new_string('Suru Dark Mode'))
 
         icon = Gio.ThemedIcon.new(self.current_icon())
         vardict.insert_value('icon', icon.serialize())
@@ -179,24 +179,49 @@ class ImmersiveIndicator(object):
         return vardict.end()
         
     def autoSwitchEnabled(self):
-        self.config_object.read(self.config_file)
-        general_config = self.config_object["General"]
-        return general_config['autoDarkMode'].strip() == 'true'
+        try:
+            self.config_object.read(self.config_file)
+            general_config = self.config_object["General"]
+            return general_config['autoDarkMode'].strip() == 'true'
+        except:
+            return False
         
     def checkInterval(self):
-        self.config_object.read(self.config_file)
-        general_config = self.config_object["General"]
-        return int(general_config['checkInterval'].strip())
+        try:
+            self.config_object.read(self.config_file)
+            general_config = self.config_object["General"]
+            value = general_config['checkInterval'].strip()
+            if value:
+                return int(value)
+            else:
+                return 15
+        except:
+            return 15
+        
         
     def startTime(self):
-        self.config_object.read(self.config_file)
-        general_config = self.config_object["General"]
-        return general_config['startTime'].strip()
+        try:
+            self.config_object.read(self.config_file)
+            general_config = self.config_object["General"]
+            value = general_config['startTime'].strip()
+            if value:
+                return value
+            else:
+                return "19:00"
+        except:
+            return "19:00"
         
     def endTime(self):
-        self.config_object.read(self.config_file)
-        general_config = self.config_object["General"]
-        return general_config['endTime'].strip()
+        try:
+            self.config_object.read(self.config_file)
+            general_config = self.config_object["General"]
+            value =  general_config['endTime'].strip()
+            if value:
+                return value
+            else:
+                return "06:00"
+        except:
+            return "06:00"
 
     def current_icon(self):
         currentState = self.current_state()

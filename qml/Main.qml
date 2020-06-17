@@ -157,8 +157,8 @@ MainView {
                     id: listItemLayout
                     
                     anchors.centerIn: parent
-                    title.text: i18n.tr("Schedule dark mode")
-                    subtitle.text: i18n.tr("Theme will automatically switch depending on the time")
+                    title.text: i18n.tr("Auto switch")
+                    subtitle.text: i18n.tr("Automatically switch theme based on time")
 
                     Switch {
                         id: checkItem
@@ -228,18 +228,11 @@ MainView {
                 onClicked: PickerPanel.openDatePicker(endTimeListitem, "date", "Hours|Minutes")
                 
                 ListItemLayout {
-//~                     anchors.centerIn: parent
                     title.text: i18n.tr("End time")
                     
                     Label {
-//~                         anchors.verticalCenter: parent.verticalCenter
                         textSize: Label.Large
-//~                         anchors {
-//~                             top: parent.top
-//~                             bottom: parent.bottom
-//~                         }
                         text: Qt.formatDateTime(endTimeListitem.date, "hh:mm A")
-//~                         verticalAlignment: Label.AlignVCenter
                         SlotsLayout.position: SlotsLayout.Trailing
                     }
                 }
@@ -292,14 +285,14 @@ MainView {
             }
             
             Label {
-                text: i18n.tr("Warning: The smaller the value, the higher the impact to battery")
+                text: i18n.tr("Warning: The smaller the value, the higher the impact to battery. This takes effect even when auto-switching is disabled.")
                 color: theme.palette.normal.negative
-                horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.Wrap
                 textSize: Label.Small
                 
-                Layout.alignment: Qt.AlignHCenter
+                Layout.alignment: Qt.AlignLeft
                 Layout.fillWidth: true
+                Layout.leftMargin: units.gu(2)
             }
             
 
