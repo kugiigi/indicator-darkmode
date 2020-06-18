@@ -123,7 +123,7 @@ class ImmersiveIndicator(object):
                 or (((reverseLogic == False and (now < start or now > end)) or (reverseLogic == True and now < start and now > end)) and currentTheme != self.AMBIANCE_TEXT):
                 self.toggleTheme()
         
-        logger.debug('Updated theme to: {}'.format(self.current_theme()))
+        logger.debug('Suru dark enabled: {}'.format(str(self.current_state())))
         self.action_group.change_action_state(self.ROOT_ACTION, self.root_state())
         self.action_group.change_action_state(self.CURRENT_ACTION, GLib.Variant.new_boolean(self.current_state()))
         self._update_menu()
@@ -147,7 +147,7 @@ class ImmersiveIndicator(object):
         
         #Write changes back to file
         with open(self.theme_ini, 'w') as conf:
-            self.theme_parser.write(conf)
+            self.theme_parser.write(conf, space_around_delimiters=False)
 
     def run(self):
         self._setup_actions()
