@@ -36,7 +36,8 @@ class ImmersiveIndicator(object):
     
     config_file = "/home/phablet/.config/indicator-darkmode/indicator-darkmode.conf"  # TODO don't hardcode this
     theme_ini = "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
-    config_object = ConfigParser()
+    config_parser = ConfigParser()
+    theme_parser = ConfigParser()
     
     def __init__(self, bus):
         self.bus = bus
@@ -45,11 +46,6 @@ class ImmersiveIndicator(object):
         self.sub_menu = Gio.Menu()
 
         self.current_switch_icon = self.DISABLED_ICON
-        
-    def get_current_theme(self):
-        self.config_object.read(self.theme_ini)
-        general_config = self.config_object["General"]
-        return general_config['theme'].strip()
 
     def get_text(self, condition):
         text = 'Indicator Suru Dark Mode'
@@ -127,7 +123,7 @@ class ImmersiveIndicator(object):
                 or (((reverseLogic == False and (now < start or now > end)) or (reverseLogic == True and now < start and now > end)) and currentTheme != self.AMBIANCE_TEXT):
                 self.toggleTheme()
         
-        logger.debug('Updated state to: {}'.format(self.current_icon()))
+        logger.debug('Updated theme to: {}'.format(self.current_theme()))
         self.action_group.change_action_state(self.ROOT_ACTION, self.root_state())
         self.action_group.change_action_state(self.CURRENT_ACTION, GLib.Variant.new_boolean(self.current_state()))
         self._update_menu()
@@ -138,8 +134,8 @@ class ImmersiveIndicator(object):
         return False
         
     def toggleTheme(self):
-        self.config_object.read(self.theme_ini)
-        general_config = self.config_object["General"]
+        self.theme_parser.read(self.theme_ini)
+        general_config = self.theme_parser["General"]
         currentTheme = self.current_theme()
         
         if currentTheme == self.SURUDARK_TEXT:
@@ -151,7 +147,7 @@ class ImmersiveIndicator(object):
         
         #Write changes back to file
         with open(self.theme_ini, 'w') as conf:
-            self.config_object.write(conf)
+            self.theme_parser.write(conf)
 
     def run(self):
         self._setup_actions()
@@ -180,16 +176,16 @@ class ImmersiveIndicator(object):
         
     def autoSwitchEnabled(self):
         try:
-            self.config_object.read(self.config_file)
-            general_config = self.config_object["General"]
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
             return general_config['autoDarkMode'].strip() == 'true'
         except:
             return False
         
     def checkInterval(self):
         try:
-            self.config_object.read(self.config_file)
-            general_config = self.config_object["General"]
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
             value = general_config['checkInterval'].strip()
             if value:
                 return int(value)
@@ -201,8 +197,8 @@ class ImmersiveIndicator(object):
         
     def startTime(self):
         try:
-            self.config_object.read(self.config_file)
-            general_config = self.config_object["General"]
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
             value = general_config['startTime'].strip()
             if value:
                 return value
@@ -213,8 +209,8 @@ class ImmersiveIndicator(object):
         
     def endTime(self):
         try:
-            self.config_object.read(self.config_file)
-            general_config = self.config_object["General"]
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
             value =  general_config['endTime'].strip()
             if value:
                 return value
@@ -232,8 +228,8 @@ class ImmersiveIndicator(object):
         return icon
         
     def current_theme(self):
-        self.config_object.read(self.theme_ini)
-        general_config = self.config_object["General"]
+        self.theme_parser.read(self.theme_ini)
+        general_config = self.theme_parser["General"]
         return general_config['theme'].strip()
         
     def current_state(self):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-darkmode.kugiigi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 23:26+0800\n"
+"POT-Creation-Date: 2020-06-18 15:03+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,66 +82,72 @@ msgid ""
 "while some will only have partial support and some won't even respect it."
 msgstr ""
 
-#: ../qml/Main.qml:160
-msgid "Auto switch"
+#: ../qml/Main.qml:122
+msgid ""
+"Reinstall the indicator and reboot or restart Lomiri whenever an update is "
+"installed."
 msgstr ""
 
 #: ../qml/Main.qml:161
+msgid "Auto switch"
+msgstr ""
+
+#: ../qml/Main.qml:162
 msgid "Automatically switch theme based on time"
 msgstr ""
 
-#: ../qml/Main.qml:205
+#: ../qml/Main.qml:206
 msgid "Start time"
 msgstr ""
 
-#: ../qml/Main.qml:231
+#: ../qml/Main.qml:232
 msgid "End time"
 msgstr ""
 
-#: ../qml/Main.qml:254
+#: ../qml/Main.qml:255
 msgid "Time check interval (minutes)"
 msgstr ""
 
-#: ../qml/Main.qml:255
+#: ../qml/Main.qml:256
 msgid ""
 "This determines how often the indicator will check the time and if there's a "
 "need to toggle the theme."
 msgstr ""
 
-#: ../qml/Main.qml:288
+#: ../qml/Main.qml:289
 msgid ""
 "Warning: The smaller the value, the higher the impact to battery. This takes "
 "effect even when auto-switching is disabled."
 msgstr ""
 
-#: ../qml/Main.qml:306
+#: ../qml/Main.qml:307
 msgid "Install Indicator"
 msgstr ""
 
-#: ../qml/Main.qml:306
+#: ../qml/Main.qml:307
 msgid "Uninstall Indicator"
 msgstr ""
 
-#: ../qml/Main.qml:320
+#: ../qml/Main.qml:321
 msgid "Uninstall the indicator here before uninstalling the app!"
 msgstr ""
 
-#: ../qml/Main.qml:335
+#: ../qml/Main.qml:336
 msgid "Successfully installed!"
 msgstr ""
 
-#: ../qml/Main.qml:335 ../qml/Main.qml:346
+#: ../qml/Main.qml:336 ../qml/Main.qml:347
 msgid "Please reboot or restart Lomiri/Unity8"
 msgstr ""
 
-#: ../qml/Main.qml:339
+#: ../qml/Main.qml:340
 msgid "Failed to install"
 msgstr ""
 
-#: ../qml/Main.qml:346
+#: ../qml/Main.qml:347
 msgid "Successfully uninstalled!"
 msgstr ""
 
-#: ../qml/Main.qml:350
+#: ../qml/Main.qml:351
 msgid "Failed to uninstall"
 msgstr ""

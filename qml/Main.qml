@@ -119,6 +119,7 @@ MainView {
                     text: "- " + i18n.tr("The theme change won't take effect on currently open apps until they are restarted. ")
                         + "\n\n- " + i18n.tr("Time accuracy for automatically switching to a theme will be based on the set time interval for checking the time.")
                         + "\n\n- " + i18n.tr("Suru Dark theme support varies across apps. There are apps that just works while some will only have partial support and some won't even respect it.")
+                        + "\n\n- " + i18n.tr("Reinstall the indicator and reboot or restart Lomiri whenever an update is installed.")
                     wrapMode: Text.Wrap
                 }
             }
@@ -173,7 +174,7 @@ MainView {
                             }
                         }
                         onClicked: {
-                            switchValue = !bindValue
+                            switchAuto.switchValue = !switchAuto.bindValue
                         }
                     }
                 }
@@ -207,7 +208,7 @@ MainView {
                     Label {
                         anchors.verticalCenter: parent.verticalCenter
                         textSize: Label.Large
-                        text: Qt.formatDateTime(startTimeListitem.date, "hh:mm A")
+                        text: startTimeListitem.date.toLocaleTimeString(Qt.locale(),Locale.ShortFormat)
                         SlotsLayout.position: SlotsLayout.Trailing
                     }
                 }
@@ -232,7 +233,7 @@ MainView {
                     
                     Label {
                         textSize: Label.Large
-                        text: Qt.formatDateTime(endTimeListitem.date, "hh:mm A")
+                        text: endTimeListitem.date.toLocaleTimeString(Qt.locale(),Locale.ShortFormat)
                         SlotsLayout.position: SlotsLayout.Trailing
                     }
                 }
