@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Kugi Eusebio
+# This file is distributed under the same license as the indicator-darkmode.kugiigi package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: indicator-darkmode.kugiigi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-19 19:12+0000\n"
+"PO-Revision-Date: 2020-06-19 21:31+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Daniel Frost <one@frostinfo.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#: ../qml/Main.qml:30
+msgid "Suru Dark mode Indicator"
+msgstr "Suru Dark Design Indikator"
+
+#: ../qml/Main.qml:60
+msgid "What is this?"
+msgstr "Was ist das überhaupt?"
+
+#: ../qml/Main.qml:69
+msgid ""
+"This is a proof of concept for an indicator to switch between Ambiance and "
+"Suru Dark theme."
+msgstr ""
+"Dies ist ein Machbarkeitstest für einen Indikator um zwischen dem Ambiance "
+"und dem SuruDark Designs zu wechseln."
+
+#: ../qml/Main.qml:76
+msgid "What does it exactly do?"
+msgstr "Was genau passiert hier?"
+
+#: ../qml/Main.qml:85
+msgid ""
+"It modifies the theme in the config file \"/home/phablet/.config/ubuntu-ui-"
+"toolkit/theme.ini\""
+msgstr ""
+"Es ändert das in der Config-Datei \"/home/phablet/.config/ubuntu-ui-toolkit/"
+"theme.ini\" gespeicherte Design"
+
+#: ../qml/Main.qml:92
+msgid "How does it work?"
+msgstr "Wie funktioniert das?"
+
+#: ../qml/Main.qml:101
+msgid ""
+"Enabling Dark Mode from the indicator will switch to the theme \"Suru Dark"
+"\". "
+msgstr ""
+"Das aktivieren von Dark Mode im Indikator wechselt zum Design \"Suru Dark\". "
+
+#: ../qml/Main.qml:102
+msgid "Disabling it will revert back to \"Ambiance\". "
+msgstr "Deaktivieren wechselt zurück zu \"Ambiance\". "
+
+#: ../qml/Main.qml:103
+msgid ""
+"There is also an option to switch the theme automatically based on the time."
+msgstr "Es gibt weiterhin eine Option um das Design zeitbasiert zu wechseln."
+
+#: ../qml/Main.qml:110
+msgid "Anything else?"
+msgstr "Noch etwas?"
+
+#: ../qml/Main.qml:119
+msgid ""
+"The theme change won't take effect on currently open apps until they are "
+"restarted. "
+msgstr ""
+"Das Design wird nicht für momentan geöffnete Apps aktiv, sondern erst wenn "
+"diese neu gestartet werden. "
+
+#: ../qml/Main.qml:120
+msgid ""
+"Time accuracy for automatically switching to a theme will be based on the "
+"set time interval for checking the time."
+msgstr ""
+"Die Zeitgenauigkeit des zeitbasierten Designwechsels hängt vom eingestellten "
+"Prüfintervall ab."
+
+#: ../qml/Main.qml:121
+msgid ""
+"Suru Dark theme support varies across apps. There are apps that just works "
+"while some will only have partial support and some won't even respect it."
+msgstr ""
+"Die Implementierung des Suru Dark Designs ist unterschiedlich. Manche Apps "
+"klappen gut, manche teilweise und manche unterstützen dieses Design gar "
+"nicht."
+
+#: ../qml/Main.qml:122
+msgid ""
+"Reinstall the indicator and reboot or restart Lomiri whenever an update is "
+"installed."
+msgstr ""
+"Bei jedem Update müssen der Indikator und anschließend Lomiri neu gestartet "
+"werden."
+
+#: ../qml/Main.qml:161
+msgid "Auto switch"
+msgstr "Automatischer Wechsel"
+
+#: ../qml/Main.qml:162
+msgid "Automatically switch theme based on time"
+msgstr "Automatischer zeitbasierter Designwechsel"
+
+#: ../qml/Main.qml:206
+msgid "Start time"
+msgstr "Anfangszeit"
+
+#: ../qml/Main.qml:232
+msgid "End time"
+msgstr "Endzeit"
+
+#: ../qml/Main.qml:255
+msgid "Time check interval (minutes)"
+msgstr "Zeitprüfintervall (in Minuten)"
+
+#: ../qml/Main.qml:256
+msgid ""
+"This determines how often the indicator will check the time and if there's a "
+"need to toggle the theme."
+msgstr ""
+"Dies bestimmt, wie oft der Indikator abgleicht, ob das Design gewechselt "
+"werden muss."
+
+#: ../qml/Main.qml:289
+msgid ""
+"Warning: The smaller the value, the higher the impact to battery. This takes "
+"effect even when auto-switching is disabled."
+msgstr ""
+"Warnung: Je häufiger geprüft wird, desto größer ist der Stromverbrauch. Dies "
+"gilt auch, wenn der automatische Wechsel deaktiviert ist."
+
+#: ../qml/Main.qml:307
+msgid "Install Indicator"
+msgstr "Indikator installieren"
+
+#: ../qml/Main.qml:307
+msgid "Uninstall Indicator"
+msgstr "Indikator deinstallieren"
+
+#: ../qml/Main.qml:321
+msgid "Uninstall the indicator here before uninstalling the app!"
+msgstr "Vor Deinstallation der App hier den Indikator deinstallieren!"
+
+#: ../qml/Main.qml:336
+msgid "Successfully installed!"
+msgstr "Erfolgreich installiert!"
+
+#: ../qml/Main.qml:336 ../qml/Main.qml:347
+msgid "Please reboot or restart Lomiri/Unity8"
+msgstr "Bitte Gerät oder Lomiri/Unity8 neu starten"
+
+#: ../qml/Main.qml:340
+msgid "Failed to install"
+msgstr "Installation fehlgeschlagen"
+
+#: ../qml/Main.qml:347
+msgid "Successfully uninstalled!"
+msgstr "Erfolgreich deinstalliert!"
+
+#: ../qml/Main.qml:351
+msgid "Failed to uninstall"
+msgstr "Deinstallation fehlgeschlagen"
