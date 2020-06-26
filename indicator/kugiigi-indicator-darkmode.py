@@ -24,7 +24,7 @@ logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 
 
-class ImmersiveIndicator(object):
+class DarkModeIndicator(object):
     ROOT_ACTION = 'root'
     CURRENT_ACTION = "toggle"
     AUTO_ACTION = "auto"
@@ -317,7 +317,7 @@ if __name__ == '__main__':
         logger.critical('Error: Bus name is already taken')
         sys.exit(1)
 
-    wi = ImmersiveIndicator(bus)
+    wi = DarkModeIndicator(bus)
     wi.run()
 
     logger.debug('Dark Mode Indicator startup completed')
