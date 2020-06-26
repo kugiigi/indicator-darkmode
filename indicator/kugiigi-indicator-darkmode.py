@@ -5,6 +5,7 @@ import urllib.request
 import subprocess
 import shlex
 import logging
+import time
 
 from gi.repository import Gio
 from gi.repository import GLib
@@ -23,9 +24,10 @@ logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 
 
-class ImmersiveIndicator(object):
+class DarkModeIndicator(object):
     ROOT_ACTION = 'root'
     CURRENT_ACTION = "toggle"
+    AUTO_ACTION = "auto"
     SETTINGS_ACTION = 'settings'
     MAIN_SECTION = 0
     
@@ -36,7 +38,11 @@ class ImmersiveIndicator(object):
     
     config_file = "/home/phablet/.config/indicator-darkmode/indicator-darkmode.conf"  # TODO don't hardcode this
     theme_ini = "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
+    
     config_parser = ConfigParser()
+    # Do not convert attribute names to lowercase
+    config_parser.optionxform = str
+    
     theme_parser = ConfigParser()
     
     def __init__(self, bus):
@@ -56,21 +62,32 @@ class ImmersiveIndicator(object):
         return icon
 
     def toggle_mode_activated(self, action, data):
-        logger.debug('toggle_mode_activated')
+        self.log(message='toggle_mode_activated')
         
         if self.autoSwitchEnabled() == False:
             self.toggleTheme()
         
         self.update_darkmode(set_timeout=False)
         
+    def auto_mode_activated(self, action, data):
+        self.log(message='auto_mode_activated')
+        
+        self.toggleAuto()
+        
+        self.update_darkmode()
+        
     def settings_action_activated(self, action, data):
-        logger.debug('settings_action_activated')
+        self.log(message='settings_action_activated')
         subprocess.Popen(shlex.split('ubuntu-app-launch indicator-darkmode.kugiigi_indicator-darkmode'))
 
 
     def _setup_actions(self):
         root_action = Gio.SimpleAction.new_stateful(self.ROOT_ACTION, None, self.root_state())
         self.action_group.insert(root_action)
+        
+        auto_action = Gio.SimpleAction.new_stateful(self.AUTO_ACTION, None, GLib.Variant.new_boolean(self.autoSwitchEnabled()))
+        auto_action.connect('activate', self.auto_mode_activated)
+        self.action_group.insert(auto_action)
         
         current_action = Gio.SimpleAction.new_stateful(self.CURRENT_ACTION, None, GLib.Variant.new_boolean(self.current_state()))
         current_action.connect('activate', self.toggle_mode_activated)
@@ -84,9 +101,14 @@ class ImmersiveIndicator(object):
     def _create_section(self):
         section = Gio.Menu()
         
-        current_menu_item = Gio.MenuItem.new('Suru Dark Mode', 'indicator.{}'.format(self.CURRENT_ACTION))
-        current_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
-        section.append_item(current_menu_item)
+        auto_menu_item = Gio.MenuItem.new('Scheduled', 'indicator.{}'.format(self.AUTO_ACTION))
+        auto_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
+        section.append_item(auto_menu_item)
+        
+        if self.autoSwitchEnabled() == False:
+            current_menu_item = Gio.MenuItem.new('Suru Dark Mode', 'indicator.{}'.format(self.CURRENT_ACTION))
+            current_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
+            section.append_item(current_menu_item)
         
         settings_menu_item = Gio.MenuItem.new('Suru Dark Mode Settings...', 'indicator.{}'.format(self.SETTINGS_ACTION))
         section.append_item(settings_menu_item)
@@ -107,7 +129,8 @@ class ImmersiveIndicator(object):
         self.sub_menu.insert_section(self.MAIN_SECTION, 'Suru Dark Mode', self._create_section())
 
     def update_darkmode(self, set_timeout=True): 
-        if self.autoSwitchEnabled() == True:
+        autoEnabled = self.autoSwitchEnabled()
+        if autoEnabled == True:
             currentTheme = self.current_theme()
             startTime = self.startTime().split(':')
             endTime = self.endTime().split(':')
@@ -123,14 +146,32 @@ class ImmersiveIndicator(object):
                 or (((reverseLogic == False and (now < start or now > end)) or (reverseLogic == True and now < start and now > end)) and currentTheme != self.AMBIANCE_TEXT):
                 self.toggleTheme()
         
-        logger.debug('Suru dark enabled: {}'.format(str(self.current_state())))
+        
+        self.log(message='Suru dark enabled: {}'.format(str(self.current_state())))
+            
         self.action_group.change_action_state(self.ROOT_ACTION, self.root_state())
+        self.action_group.change_action_state(self.AUTO_ACTION, GLib.Variant.new_boolean(self.autoSwitchEnabled()))
         self.action_group.change_action_state(self.CURRENT_ACTION, GLib.Variant.new_boolean(self.current_state()))
         self._update_menu()
         
-        if set_timeout == True:
+        if set_timeout == True and autoEnabled == True:
+            interval = self.checkInterval()
+            
+            nowStamp = time.mktime(now.timetuple())
+            startStamp = time.mktime(start.timetuple())
+            endStamp = time.mktime(end.timetuple())
+            
+            startDiff = int((startStamp - nowStamp) / 60)
+            endDiff = int((endStamp - nowStamp) / 60)
+            
+            if startDiff > 0 and startDiff < interval:
+                interval = startDiff + 1
+            elif endDiff > 0 and endDiff < interval:
+                interval = endDiff + 1
+                
             # Stop timeout and recreate another so that we get the value of interval minutes in real time
-            GLib.timeout_add_seconds(60 * self.checkInterval(), self.update_darkmode)        
+            GLib.timeout_add_seconds(60 * interval, self.update_darkmode)  
+                 
         return False
         
     def toggleTheme(self):
@@ -148,6 +189,20 @@ class ImmersiveIndicator(object):
         #Write changes back to file
         with open(self.theme_ini, 'w') as conf:
             self.theme_parser.write(conf, space_around_delimiters=False)
+            
+    def toggleAuto(self):
+        self.config_parser.read(self.config_file)
+        general_config = self.config_parser["General"]
+        autoState = self.autoSwitchEnabled()
+        
+        if autoState == True:
+            general_config['autoDarkMode'] = 'false'
+        else:
+            general_config['autoDarkMode'] = 'true'
+        
+        #Write changes back to file
+        with open(self.config_file, 'w') as conf:
+            self.config_parser.write(conf, space_around_delimiters=False)
 
     def run(self):
         self._setup_actions()
@@ -173,7 +228,7 @@ class ImmersiveIndicator(object):
         vardict.insert_value('icon', icon.serialize())
 
         return vardict.end()
-        
+
     def autoSwitchEnabled(self):
         try:
             self.config_parser.read(self.config_file)
@@ -218,6 +273,14 @@ class ImmersiveIndicator(object):
                 return "06:00"
         except:
             return "06:00"
+            
+    def logging(self):
+        try:
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
+            return general_config['logging'].strip() == 'true'
+        except:
+            return False
 
     def current_icon(self):
         currentState = self.current_state()
@@ -239,6 +302,10 @@ class ImmersiveIndicator(object):
         else:
             state = False
         return state
+        
+    def log(self, message=""):
+        if self.logging() == True:
+            logger.debug(message)
 
 
 
@@ -250,7 +317,7 @@ if __name__ == '__main__':
         logger.critical('Error: Bus name is already taken')
         sys.exit(1)
 
-    wi = ImmersiveIndicator(bus)
+    wi = DarkModeIndicator(bus)
     wi.run()
 
     logger.debug('Dark Mode Indicator startup completed')
