@@ -12,6 +12,10 @@ from gi.repository import GLib
 from configparser import ConfigParser
 from datetime import datetime, timedelta
 
+import gettext
+t = gettext.translation('indicator-darkmode', fallback=True, localedir='/opt/click.ubuntu.com/indicator-darkmode.kugiigi/current/share/locale/')  # TODO don't hardcode this
+_ = t.gettext
+
 BUS_NAME = 'com.kugiigi.indicator.darkmode'
 BUS_OBJECT_PATH = '/com/kugiigi/indicator/darkmode'
 BUS_OBJECT_PATH_PHONE = BUS_OBJECT_PATH + '/phone'
