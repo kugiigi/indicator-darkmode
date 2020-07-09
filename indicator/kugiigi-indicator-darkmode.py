@@ -79,6 +79,7 @@ class DarkModeIndicator(object):
         self.toggleAuto()
 
         self.update_darkmode()
+        self._update_menu()
 
     def settings_action_activated(self, action, data):
         self.log(message='settings_action_activated')
@@ -156,7 +157,6 @@ class DarkModeIndicator(object):
         self.action_group.change_action_state(self.ROOT_ACTION, self.root_state())
         self.action_group.change_action_state(self.AUTO_ACTION, GLib.Variant.new_boolean(self.autoSwitchEnabled()))
         self.action_group.change_action_state(self.CURRENT_ACTION, GLib.Variant.new_boolean(self.current_state()))
-        self._update_menu()
 
         if set_timeout == True and autoEnabled == True:
             interval = self.checkInterval()
