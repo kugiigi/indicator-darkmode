@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-darkmode.kugiigi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-27 19:20+0000\n"
+"POT-Creation-Date: 2020-07-09 03:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,19 +204,19 @@ msgstr ""
 msgid "Failed to uninstall"
 msgstr ""
 
-#: ../indicator/kugiigi-indicator-darkmode.py:57
+#: ../indicator/kugiigi-indicator-darkmode.py:61
 msgid "Indicator Suru Dark Mode"
 msgstr ""
 
-#: ../indicator/kugiigi-indicator-darkmode.py:104
+#: ../indicator/kugiigi-indicator-darkmode.py:109
 msgid "Scheduled"
 msgstr ""
 
-#: ../indicator/kugiigi-indicator-darkmode.py:109
-#: ../indicator/kugiigi-indicator-darkmode.py:122
+#: ../indicator/kugiigi-indicator-darkmode.py:114
+#: ../indicator/kugiigi-indicator-darkmode.py:127
 msgid "Suru Dark Mode"
 msgstr ""
 
-#: ../indicator/kugiigi-indicator-darkmode.py:113
+#: ../indicator/kugiigi-indicator-darkmode.py:118
 msgid "Suru Dark Mode Settings..."
 msgstr ""
