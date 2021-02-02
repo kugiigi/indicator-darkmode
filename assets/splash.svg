@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg18"
+   height="1024"
+   width="1024"
+   version="1.1"
+   viewBox="0 0 270.87142 270.95055"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="splash.svg">
+  <metadata
+     id="metadata4196">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4194" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1866"
+     inkscape:window-height="1016"
+     id="namedview4192"
+     showgrid="false"
+     inkscape:zoom="0.77246095"
+     inkscape:cx="785.64898"
+     inkscape:cy="529.44349"
+     inkscape:window-x="54"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg18"
+     inkscape:pagecheckerboard="true" />
+  <rect
+     id="rect2"
+     style="color:#000000;opacity:0.98000004;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:#f7f7f7;fill-opacity:1;stroke-width:2.042871;color-rendering:auto;image-rendering:auto;shape-rendering:auto"
+     height="138.38406"
+     width="138.38406"
+     y="66.283241"
+     x="66.243675" />
+  <path
+     id="path4"
+     style="opacity:1;fill:#3b3b3b;fill-opacity:1;fill-rule:evenodd;stroke-width:2.05179644"
+     d="M 65.941364,204.96962 204.93006,65.98093 v 138.98869 z"
+     inkscape:connector-curvature="0" />
+</svg>
