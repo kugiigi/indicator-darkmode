@@ -25,6 +25,7 @@ MainView {
         property string endTime: "06:00"
         property int checkInterval: 15
         property bool logging: false
+        property bool alwaysHideIndicatorIcon: false
     }
 
     Page {
@@ -322,6 +323,45 @@ MainView {
                     Layout.leftMargin: units.gu(2)
                 }
                 
+                ListItem {
+                    id: hideIndicatorIcon
+
+                    property bool bindValue: settings.alwaysHideIndicatorIcon
+                    property bool switchValue: bindValue
+
+                    width: parent.width
+
+                    ListItemLayout {
+                        anchors.centerIn: parent
+                        title.text: i18n.tr("Always hide indicator icon")
+                        subtitle.text: i18n.tr("This always hides the icon in the top panel instead of showing when dark mode is enabled.")
+
+                        Switch {
+                            id: checkItemHide
+                            SlotsLayout.position: SlotsLayout.Trailing
+
+                            //workaround where binding to status gets lost when the checkbox is clicked
+                            Component.onCompleted: checkItemHide.checked = hideIndicatorIcon.bindValue
+                            Connections {
+                                target: hideIndicatorIcon
+                                onBindValueChanged: {
+                                    checkItemHide.checked = target.bindValue
+                                }
+                            }
+                            onClicked: {
+                                hideIndicatorIcon.switchValue = !hideIndicatorIcon.bindValue
+                            }
+                        }
+                    }
+                    onClicked: {
+                        switchValue = !bindValue
+                    }
+
+                    onSwitchValueChanged: {
+                        settings.alwaysHideIndicatorIcon = switchValue
+                    }
+                }
+
                 ListItem {
                     id: switchLogging
 
