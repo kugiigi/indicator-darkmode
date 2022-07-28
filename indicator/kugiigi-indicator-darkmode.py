@@ -221,7 +221,7 @@ class DarkModeIndicator(object):
         vardict = GLib.VariantDict.new()
 
         currentState = self.current_state()
-        if currentState == True:
+        if currentState == True and self.getIfAlwaysHidden() == False:
             vardict.insert_value('visible', GLib.Variant.new_boolean(True))
         else:
             vardict.insert_value('visible', GLib.Variant.new_boolean(False))
@@ -252,6 +252,14 @@ class DarkModeIndicator(object):
                 return 15
         except:
             return 15
+
+    def getIfAlwaysHidden(self):
+        try:
+            self.config_parser.read(self.config_file)
+            general_config = self.config_parser["General"]
+            return general_config['alwaysHideIndicatorIcon'].strip() == 'true'
+        except:
+            return False
 
 
     def startTime(self):

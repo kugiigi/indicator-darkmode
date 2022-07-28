@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-darkmode.kugiigi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-02 16:28+0000\n"
+"POT-Creation-Date: 2022-07-28 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,190 +17,200 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:33
+#: ../qml/Main.qml:34
 msgid "Suru Dark mode Indicator"
 msgstr ""
 
-#: ../qml/Main.qml:75 ../qml/Main.qml:127
+#: ../qml/Main.qml:76 ../qml/Main.qml:128
 msgid "What is this?"
 msgstr ""
 
-#: ../qml/Main.qml:136
+#: ../qml/Main.qml:137
 msgid ""
 "This is a proof of concept for an indicator to switch between Ambiance and "
 "Suru Dark theme."
 msgstr ""
 
-#: ../qml/Main.qml:143
+#: ../qml/Main.qml:144
 msgid "What does it exactly do?"
 msgstr ""
 
-#: ../qml/Main.qml:152
+#: ../qml/Main.qml:153
 msgid ""
 "It modifies the theme in the config file \"/home/phablet/.config/ubuntu-ui-"
 "toolkit/theme.ini\""
 msgstr ""
 
-#: ../qml/Main.qml:159
+#: ../qml/Main.qml:160
 msgid "How does it work?"
 msgstr ""
 
-#: ../qml/Main.qml:168
+#: ../qml/Main.qml:169
 msgid ""
 "Enabling Dark Mode from the indicator will switch to the theme \"Suru Dark"
 "\". "
 msgstr ""
 
-#: ../qml/Main.qml:169
+#: ../qml/Main.qml:170
 msgid "Disabling it will revert back to \"Ambiance\". "
 msgstr ""
 
-#: ../qml/Main.qml:170
+#: ../qml/Main.qml:171
 msgid ""
 "There is also an option to switch the theme automatically based on the time."
 msgstr ""
 
-#: ../qml/Main.qml:177
+#: ../qml/Main.qml:178
 msgid "Anything else?"
 msgstr ""
 
-#: ../qml/Main.qml:186
+#: ../qml/Main.qml:187
 msgid ""
 "The theme change won't take effect on currently open apps until they are "
 "restarted. "
 msgstr ""
 
-#: ../qml/Main.qml:187
+#: ../qml/Main.qml:188
 msgid ""
 "Time accuracy for automatically switching to a theme will be based on the "
 "set time interval for checking the time."
 msgstr ""
 
-#: ../qml/Main.qml:188
+#: ../qml/Main.qml:189
 msgid ""
 "Impact on battery is still unknown but do let me know if you notice "
 "significant reduction of battery."
 msgstr ""
 
-#: ../qml/Main.qml:189
+#: ../qml/Main.qml:190
 msgid ""
 "Some devices such as the Pinephone and Meizu MX4 may have less accurate "
 "scheduled switching due to their deep sleep behavior."
 msgstr ""
 
-#: ../qml/Main.qml:190
+#: ../qml/Main.qml:191
 msgid ""
 "For these devices, it is advised to use lower interval time and just observe "
 "the battery. "
 msgstr ""
 
-#: ../qml/Main.qml:191
+#: ../qml/Main.qml:192
 msgid ""
 "For other devices such as the Nexus 5, it's fine to set the interval to max "
 "60 minutes and it'll still be accurate."
 msgstr ""
 
-#: ../qml/Main.qml:192
+#: ../qml/Main.qml:193
 msgid ""
 "Suru Dark theme support varies across apps. There are apps that just works "
 "while some will only have partial support and some won't even respect it."
 msgstr ""
 
-#: ../qml/Main.qml:193
+#: ../qml/Main.qml:194
 msgid ""
 "Reinstall the indicator and reboot or restart Lomiri whenever an update is "
 "installed."
 msgstr ""
 
-#: ../qml/Main.qml:214
+#: ../qml/Main.qml:215
 msgid "Schedule Settings"
 msgstr ""
 
-#: ../qml/Main.qml:234
+#: ../qml/Main.qml:235
 msgid "Start time"
 msgstr ""
 
-#: ../qml/Main.qml:259
+#: ../qml/Main.qml:260
 msgid "End time"
 msgstr ""
 
-#: ../qml/Main.qml:281
+#: ../qml/Main.qml:282
 msgid "Time check interval (minutes)"
 msgstr ""
 
-#: ../qml/Main.qml:282
+#: ../qml/Main.qml:283
 msgid ""
 "This determines how often the indicator will check the time and if there's a "
 "need to toggle the theme."
 msgstr ""
 
-#: ../qml/Main.qml:315
+#: ../qml/Main.qml:316
 msgid ""
 "Warning: Lower value will make the scheduled switching more accurate but may "
 "impact the battery."
 msgstr ""
 
+#: ../qml/Main.qml:336
+msgid "Always hide indicator icon"
+msgstr ""
+
 #: ../qml/Main.qml:337
+msgid ""
+"This always hides the icon in the top panel instead of showing when dark "
+"mode is enabled."
+msgstr ""
+
+#: ../qml/Main.qml:377
 msgid "Indicator logging"
 msgstr ""
 
-#: ../qml/Main.qml:338
+#: ../qml/Main.qml:378
 msgid "Useful for debugging"
 msgstr ""
 
-#: ../qml/Main.qml:394
+#: ../qml/Main.qml:434
 msgid "Install Indicator"
 msgstr ""
 
-#: ../qml/Main.qml:394
+#: ../qml/Main.qml:434
 msgid "Uninstall Indicator"
 msgstr ""
 
-#: ../qml/Main.qml:409
+#: ../qml/Main.qml:449
 msgid "Restart Lomiri/Unity8"
 msgstr ""
 
-#: ../qml/Main.qml:425
+#: ../qml/Main.qml:465
 msgid "Uninstall the indicator here before uninstalling the app!"
 msgstr ""
 
-#: ../qml/Main.qml:442 ../qml/Main.qml:448
+#: ../qml/Main.qml:482 ../qml/Main.qml:488
 msgid "Restart Lomiri"
 msgstr ""
 
-#: ../qml/Main.qml:443
+#: ../qml/Main.qml:483
 msgid "Do you want to restart Lomiri now?"
 msgstr ""
 
-#: ../qml/Main.qml:444
+#: ../qml/Main.qml:484
 msgid "All currently open apps will be closed."
 msgstr ""
 
-#: ../qml/Main.qml:445
+#: ../qml/Main.qml:485
 msgid "Save all your work before continuing!"
 msgstr ""
 
-#: ../qml/Main.qml:457
+#: ../qml/Main.qml:497
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/Main.qml:469
+#: ../qml/Main.qml:509
 msgid "Successfully installed!"
 msgstr ""
 
-#: ../qml/Main.qml:469 ../qml/Main.qml:481
+#: ../qml/Main.qml:509 ../qml/Main.qml:521
 msgid "Please reboot or restart Lomiri/Unity8"
 msgstr ""
 
-#: ../qml/Main.qml:474
+#: ../qml/Main.qml:514
 msgid "Failed to install"
 msgstr ""
 
-#: ../qml/Main.qml:481
+#: ../qml/Main.qml:521
 msgid "Successfully uninstalled!"
 msgstr ""
 
-#: ../qml/Main.qml:486
+#: ../qml/Main.qml:526
 msgid "Failed to uninstall"
 msgstr ""
 
