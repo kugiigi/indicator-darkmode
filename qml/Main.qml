@@ -16,6 +16,22 @@ MainView {
 
     width: units.gu(45)
     height: units.gu(75)
+    
+    // Change theme in real time when set to follow system theme
+    // Only works when the app gets unfocused then focused
+    // Possibly ideal so the change won't happen while the user is using the app
+    property string previousTheme: Theme.name
+    Connections {
+        target: Qt.application
+        onStateChanged: {
+            if (target.state == Qt.ApplicationActive && previousTheme !== theme.name) {
+                theme.name = Theme.name
+                theme.name = ""
+            } else {
+                previousTheme = Theme.name
+            }
+        }
+    }
 
     Settings {
         id: settings
