@@ -2,7 +2,10 @@
 
 set -e
 
-rm /home/phablet/.config/upstart/kugiigi-indicator-darkmode.conf
-rm /home/phablet/.local/share/unity/indicators/com.kugiigi.indicator.darkmode
+systemctl --user stop kugiigi.indicatordarkmode.service
+systemctl --user disable kugiigi.indicatordarkmode.service
+
+rm /home/phablet/.config/systemd/user/kugiigi.indicatordarkmode.service
+rm /home/phablet/.local/share/ayatana/indicators/kugiigi.indicatordarkmode.indicator
 
 echo "indicator-darkmode uninstalled"

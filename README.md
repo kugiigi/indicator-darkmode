@@ -5,7 +5,7 @@ This is based from the amazing work of **Brian Douglass** for [Indicator Weather
 Thank you **Brian**!
 
 # What does it exactly do?
-It modifies the theme in the config file "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
+It modifies the theme in the config file "/home/phablet/.config/lomiri-ui-toolkit/theme.ini"
 
 # How does it work?
 Enabling Dark Mode from the indicator will switch to the theme "Suru Dark". Disabling it will revert back to "Ambiance". There is also an option to switch the theme automatically based on the time.

@@ -46,8 +46,8 @@ void Indicator::onUninstallFinished(int exitCode, QProcess::ExitStatus exitStatu
 }
 
 bool Indicator::checkInstalled() {
-    QFileInfo session("/home/phablet/.config/upstart/kugiigi-indicator-darkmode.conf");
-    QFileInfo indicator("/home/phablet/.local/share/unity/indicators/com.kugiigi.indicator.darkmode");
+    QFileInfo session("/home/phablet/.config/systemd/user/kugiigi.indicatordarkmode.service");
+    QFileInfo indicator("/home/phablet/.local/share/ayatana/indicators/kugiigi.indicatordarkmode.indicator");
 
     m_isInstalled = session.exists() && indicator.exists();
     Q_EMIT isInstalledChanged(m_isInstalled);

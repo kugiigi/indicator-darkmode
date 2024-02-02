@@ -1,8 +1,0 @@
-[Indicator Service]
-Name=kugiigi-indicator-darkmode
-ObjectPath=/com/kugiigi/indicator/darkmode
-Position=15
-
-[phone]
-ObjectPath=/com/kugiigi/indicator/darkmode/phone
-Position=15

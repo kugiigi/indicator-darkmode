@@ -1,0 +1,11 @@
+[Unit]
+Description=Indicator Dark mode
+After=graphical-session.target
+
+[Service]
+Restart=on-failure
+RestartSec=5
+ExecStart=/usr/bin/python3 /opt/click.ubuntu.com/indicator-darkmode.kugiigi/current/indicator/kugiigi-indicator-darkmode.py
+
+[Install]
+WantedBy=graphical-session.target
