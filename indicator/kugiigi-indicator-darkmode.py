@@ -13,11 +13,13 @@ from configparser import ConfigParser
 from datetime import datetime, timedelta
 
 import gettext
-t = gettext.translation('indicator-darkmode', fallback=True, localedir='/opt/click.ubuntu.com/indicator-darkmode.kugiigi/current/share/locale/')  # TODO don't hardcode this
+
+script_path = os.path.abspath(os.path.dirname(__file__))
+t = gettext.translation('indicator-darkmode', fallback=True, localedir=os.path.join(script_path, '../share/locale/'))
 _ = t.gettext
 
-BUS_NAME = 'com.kugiigi.indicator.darkmode'
-BUS_OBJECT_PATH = '/com/kugiigi/indicator/darkmode'
+BUS_NAME = 'kugiigi.indicatordarkmode.indicator'
+BUS_OBJECT_PATH = '/kugiigi/indicatordarkmode/indicator'
 BUS_OBJECT_PATH_PHONE = BUS_OBJECT_PATH + '/phone'
 
 logger = logging.getLogger()
@@ -35,13 +37,13 @@ class DarkModeIndicator(object):
     SETTINGS_ACTION = 'settings'
     MAIN_SECTION = 0
 
-    AMBIANCE_TEXT = "Ubuntu.Components.Themes.Ambiance"
-    SURUDARK_TEXT = "Ubuntu.Components.Themes.SuruDark"
+    AMBIANCE_TEXT = "Lomiri.Components.Themes.Ambiance"
+    SURUDARK_TEXT = "Lomiri.Components.Themes.SuruDark"
     ENABLED_ICON = "weather-clear-night-symbolic"
     DISABLED_ICON = "night-mode"
 
     config_file = "/home/phablet/.config/indicator-darkmode/indicator-darkmode.conf"  # TODO don't hardcode this
-    theme_ini = "/home/phablet/.config/ubuntu-ui-toolkit/theme.ini"
+    theme_ini = "/home/phablet/.config/lomiri-ui-toolkit/theme.ini"
 
     config_parser = ConfigParser()
     # Do not convert attribute names to lowercase
@@ -83,39 +85,39 @@ class DarkModeIndicator(object):
 
     def settings_action_activated(self, action, data):
         self.log(message='settings_action_activated')
-        subprocess.Popen(shlex.split('ubuntu-app-launch indicator-darkmode.kugiigi_indicator-darkmode'))
+        subprocess.Popen(shlex.split('lomiri-app-launch indicator-darkmode.kugiigi_indicator-darkmode'))
 
 
     def _setup_actions(self):
         root_action = Gio.SimpleAction.new_stateful(self.ROOT_ACTION, None, self.root_state())
-        self.action_group.insert(root_action)
+        self.action_group.add_action(root_action)
 
         auto_action = Gio.SimpleAction.new_stateful(self.AUTO_ACTION, None, GLib.Variant.new_boolean(self.autoSwitchEnabled()))
         auto_action.connect('activate', self.auto_mode_activated)
-        self.action_group.insert(auto_action)
+        self.action_group.add_action(auto_action)
 
         current_action = Gio.SimpleAction.new_stateful(self.CURRENT_ACTION, None, GLib.Variant.new_boolean(self.current_state()))
         current_action.connect('activate', self.toggle_mode_activated)
-        self.action_group.insert(current_action)
+        self.action_group.add_action(current_action)
 
         settings_action = Gio.SimpleAction.new(self.SETTINGS_ACTION, None)
         settings_action.connect('activate', self.settings_action_activated)
-        self.action_group.insert(settings_action)
+        self.action_group.add_action(settings_action)
 
 
     def _create_section(self):
         section = Gio.Menu()
 
         auto_menu_item = Gio.MenuItem.new(_('Scheduled'), 'indicator.{}'.format(self.AUTO_ACTION))
-        auto_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
+        auto_menu_item.set_attribute_value('x-ayatana-type', GLib.Variant.new_string('org.ayatana.indicator.switch'))
         section.append_item(auto_menu_item)
 
         if self.autoSwitchEnabled() == False:
             current_menu_item = Gio.MenuItem.new(_('Suru Dark Mode'), 'indicator.{}'.format(self.CURRENT_ACTION))
-            current_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.switch'))
+            current_menu_item.set_attribute_value('x-ayatana-type', GLib.Variant.new_string('org.ayatana.indicator.switch'))
             section.append_item(current_menu_item)
 
-        settings_menu_item = Gio.MenuItem.new(_('Suru Dark Mode Settings...'), 'indicator.{}'.format(self.SETTINGS_ACTION))
+        settings_menu_item = Gio.MenuItem.new(_('Indicator Settings...'), 'indicator.{}'.format(self.SETTINGS_ACTION))
         section.append_item(settings_menu_item)
 
 
@@ -125,7 +127,7 @@ class DarkModeIndicator(object):
         self.sub_menu.insert_section(self.MAIN_SECTION, 'Suru Dark Mode', self._create_section())
 
         root_menu_item = Gio.MenuItem.new(_('Suru Dark Mode'), 'indicator.{}'.format(self.ROOT_ACTION))
-        root_menu_item.set_attribute_value('x-canonical-type', GLib.Variant.new_string('com.canonical.indicator.root'))
+        root_menu_item.set_attribute_value('x-ayatana-type', GLib.Variant.new_string('org.ayatana.indicator.root'))
         root_menu_item.set_submenu(self.sub_menu)
         self.menu.append_item(root_menu_item)
 

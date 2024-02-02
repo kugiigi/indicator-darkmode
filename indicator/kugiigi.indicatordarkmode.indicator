@@ -1,0 +1,8 @@
+[Indicator Service]
+Name=indicatordarkmode
+ObjectPath=/kugiigi/indicatordarkmode/indicator
+Position=15
+
+[phone]
+ObjectPath=/kugiigi/indicatordarkmode/indicator/phone
+Position=15
