@@ -7,26 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-darkmode.kugiigi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 13:16+0800\n"
-"PO-Revision-Date: 2020-07-04 13:26+0200\n"
+"POT-Creation-Date: 2024-02-02 14:56+0000\n"
+"PO-Revision-Date: 2024-02-04 13:26+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: ../qml/Main.qml:33
+#: ../indicator/kugiigi-indicator-darkmode.py:63
+msgid "Indicator Suru Dark Mode"
+msgstr "Suru donkerthema-indicator"
+
+#: ../indicator/kugiigi-indicator-darkmode.py:111
+msgid "Scheduled"
+msgstr "Ingepland"
+
+#: ../indicator/kugiigi-indicator-darkmode.py:116
+#: ../indicator/kugiigi-indicator-darkmode.py:129
+msgid "Suru Dark Mode"
+msgstr "Suru donker thema"
+
+#: ../indicator/kugiigi-indicator-darkmode.py:120
+msgid "Indicator Settings..."
+msgstr "Indicatorinstellingen…"
+
+#: ../qml/Main.qml:50
 msgid "Suru Dark mode Indicator"
-msgstr "Donkere modus-indicator"
+msgstr "Donkerthema-indicator"
 
-#: ../qml/Main.qml:75 ../qml/Main.qml:127
+#: ../qml/Main.qml:92 ../qml/Main.qml:144
 msgid "What is this?"
 msgstr "Wat is dit?"
 
-#: ../qml/Main.qml:136
+#: ../qml/Main.qml:153
 msgid ""
 "This is a proof of concept for an indicator to switch between Ambiance and "
 "Suru Dark theme."
@@ -34,60 +51,60 @@ msgstr ""
 "Dit is een proef omtrent het wisselen tussen het Ambiance- en Suru donker-"
 "thema."
 
-#: ../qml/Main.qml:143
+#: ../qml/Main.qml:160
 msgid "What does it exactly do?"
-msgstr "Wat doet het precies?"
-
-#: ../qml/Main.qml:152
-msgid ""
-"It modifies the theme in the config file \"/home/phablet/.config/ubuntu-ui-"
-"toolkit/theme.ini\""
-msgstr ""
-"Het past het thema aan in het configuratiebestand '/home/phablet/.config/"
-"ubuntu-ui-toolkit/theme.ini'"
-
-#: ../qml/Main.qml:159
-msgid "How does it work?"
-msgstr "Hoe werkt het?"
-
-#: ../qml/Main.qml:168
-msgid ""
-"Enabling Dark Mode from the indicator will switch to the theme \"Suru Dark"
-"\". "
-msgstr ""
-"Schakel de donkere modus in in de indicator om over te schakelen naar Suru "
-"donker. "
+msgstr "Wat doet de indicator precies?"
 
 #: ../qml/Main.qml:169
+msgid ""
+"It modifies the theme in the config file \"/home/phablet/.config/lomiri-ui-"
+"toolkit/theme.ini\""
+msgstr ""
+"Het past het thema aan in het configuratiebestand ‘/home/phablet/.config/"
+"ubuntu-ui-toolkit/theme.ini’"
+
+#: ../qml/Main.qml:176
+msgid "How does it work?"
+msgstr "Hoe werkt de indicator?"
+
+#: ../qml/Main.qml:185
+msgid ""
+"Enabling Dark Mode from the indicator will switch to the theme \"Suru "
+"Dark\". "
+msgstr ""
+"Schakel het donkere thema in in de indicator om over te schakelen naar Suru "
+"donker. "
+
+#: ../qml/Main.qml:186
 msgid "Disabling it will revert back to \"Ambiance\". "
 msgstr "Schakel uit om terug te gaan naar Ambiance. "
 
-#: ../qml/Main.qml:170
+#: ../qml/Main.qml:187
 msgid ""
 "There is also an option to switch the theme automatically based on the time."
 msgstr ""
-"Er is tevens een optie om het thema automatisch te wijzigen op basis van "
-"tijd."
+"Er is tevens een optie om het thema automatisch te wijzigen op bepaalde "
+"tijdstippen."
 
-#: ../qml/Main.qml:177
+#: ../qml/Main.qml:194
 msgid "Anything else?"
 msgstr "Nog meer wat ik moet weten?"
 
-#: ../qml/Main.qml:186
+#: ../qml/Main.qml:203
 msgid ""
 "The theme change won't take effect on currently open apps until they are "
 "restarted. "
 msgstr "Start geopende apps opnieuw op om het nieuwe thema toe te passen. "
 
-#: ../qml/Main.qml:187
+#: ../qml/Main.qml:204
 msgid ""
 "Time accuracy for automatically switching to a theme will be based on the "
 "set time interval for checking the time."
 msgstr ""
-"De tijdnauwkeurigheid van automatische themawijziging is gebaseerd op de "
+"De tijdnauwkeurigheid van de automatische themawijziging is gebaseerd op de "
 "ingestelde tussenpoos."
 
-#: ../qml/Main.qml:188
+#: ../qml/Main.qml:205
 msgid ""
 "Impact on battery is still unknown but do let me know if you notice "
 "significant reduction of battery."
@@ -95,7 +112,7 @@ msgstr ""
 "Of het impact heeft op de accuduur is vooralsnog onbekend. Laat me weten als "
 "je merkt dat de accuduur verkort is."
 
-#: ../qml/Main.qml:189
+#: ../qml/Main.qml:206
 msgid ""
 "Some devices such as the Pinephone and Meizu MX4 may have less accurate "
 "scheduled switching due to their deep sleep behavior."
@@ -103,7 +120,7 @@ msgstr ""
 "Op sommige apparaten, zoals de Pinephone en Meizu MX4, is de automatische "
 "themawijziging mogelijk minder nauwkeurig door hun slaapstandgedrag."
 
-#: ../qml/Main.qml:190
+#: ../qml/Main.qml:207
 msgid ""
 "For these devices, it is advised to use lower interval time and just observe "
 "the battery. "
@@ -111,7 +128,7 @@ msgstr ""
 "Op deze apparaten raad ik aan een lagere tussenpoos in te stellen en de "
 "accuduur in de gaten houden. "
 
-#: ../qml/Main.qml:191
+#: ../qml/Main.qml:208
 msgid ""
 "For other devices such as the Nexus 5, it's fine to set the interval to max "
 "60 minutes and it'll still be accurate."
@@ -119,7 +136,7 @@ msgstr ""
 "Op andere apparaten, zoals de Nexus 5, kun je de tussenpoos prima op 60 "
 "minuten instellen."
 
-#: ../qml/Main.qml:192
+#: ../qml/Main.qml:209
 msgid ""
 "Suru Dark theme support varies across apps. There are apps that just works "
 "while some will only have partial support and some won't even respect it."
@@ -127,37 +144,35 @@ msgstr ""
 "Het donkere Suru-thema wordt wisselend ondersteund. Sommige apps "
 "ondersteunen het volledig, andere deels en sommige helemaal niet."
 
-#: ../qml/Main.qml:193
-msgid ""
-"Reinstall the indicator and reboot or restart Lomiri whenever an update is "
-"installed."
-msgstr "Herinstalleer de indicator en herstart Lomiri na elke update."
+#: ../qml/Main.qml:210
+msgid "Reinstall the indicator and reboot whenever an update is installed."
+msgstr "Herinstalleer de indicator en herstart na elke update."
 
-#: ../qml/Main.qml:214
+#: ../qml/Main.qml:231
 msgid "Schedule Settings"
 msgstr "Tijdschema"
 
-#: ../qml/Main.qml:234
+#: ../qml/Main.qml:251
 msgid "Start time"
 msgstr "Begintijd"
 
-#: ../qml/Main.qml:259
+#: ../qml/Main.qml:276
 msgid "End time"
 msgstr "Eindtijd"
 
-#: ../qml/Main.qml:281
+#: ../qml/Main.qml:298
 msgid "Time check interval (minutes)"
 msgstr "Controletussenpoos (in minuten)"
 
-#: ../qml/Main.qml:282
+#: ../qml/Main.qml:299
 msgid ""
 "This determines how often the indicator will check the time and if there's a "
 "need to toggle the theme."
 msgstr ""
-"Hiermee geef je aan hoe vaak de indicator de tijd moet controleren om te "
-"bepalen of het thema moet worden gewijzigd."
+"Hiermee geef je aan hoe vaak de indicator het tijdstip moet controleren om "
+"te bepalen of het thema moet worden gewijzigd."
 
-#: ../qml/Main.qml:315
+#: ../qml/Main.qml:332
 msgid ""
 "Warning: Lower value will make the scheduled switching more accurate but may "
 "impact the battery."
@@ -165,66 +180,72 @@ msgstr ""
 "Waarschuwing: een lagere waarde maakt de planning nauwkeuriger, maar heeft "
 "mogelijk meer impact op de accuduur."
 
-#: ../qml/Main.qml:337
+#: ../qml/Main.qml:352
+msgid "Always hide indicator icon"
+msgstr "Indicatorpictogram verbergen"
+
+#: ../qml/Main.qml:353
+msgid ""
+"This always hides the icon in the top panel instead of showing when dark "
+"mode is enabled."
+msgstr ""
+"Hierdoor wordt pictogram op het paneel bovenaan verborgen, zelfs als het "
+"donkere thema is ingesteld."
+
+#: ../qml/Main.qml:393
 msgid "Indicator logging"
 msgstr "Logboek aanleggen"
 
-#: ../qml/Main.qml:338
+#: ../qml/Main.qml:394
 msgid "Useful for debugging"
 msgstr "Nuttig voor foutopsporing"
 
-#: ../qml/Main.qml:394
+#: ../qml/Main.qml:450
 msgid "Install Indicator"
 msgstr "Indicator toevoegen"
 
-#: ../qml/Main.qml:394
+#: ../qml/Main.qml:450
 msgid "Uninstall Indicator"
 msgstr "Indicator verwijderen"
 
-#: ../qml/Main.qml:409
-msgid "Restart Lomiri/Unity8"
-msgstr "Herstart Lomiri/Unity8"
-
-#: ../qml/Main.qml:425
+#: ../qml/Main.qml:466
 msgid "Uninstall the indicator here before uninstalling the app!"
 msgstr "Verwijder hier de indicator vóórdat je de app deïnstalleert!"
 
-#: ../qml/Main.qml:442 ../qml/Main.qml:448
-msgid "Restart Lomiri"
-msgstr "Lomiri herstarten"
-
-#: ../qml/Main.qml:443
-msgid "Do you want to restart Lomiri now?"
-msgstr "Wil je Lomiri nu herstarten?"
-
-#: ../qml/Main.qml:444
-msgid "All currently open apps will be closed."
-msgstr "Alle geopende apps worden afgesloten."
-
-#: ../qml/Main.qml:445
-msgid "Save all your work before continuing!"
-msgstr "Sla je werk op voordat je doorgaat!"
-
-#: ../qml/Main.qml:457
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: ../qml/Main.qml:469
+#: ../qml/Main.qml:481
 msgid "Successfully installed!"
 msgstr "De indicator is toegevoegd!"
 
-#: ../qml/Main.qml:469 ../qml/Main.qml:481
-msgid "Please reboot or restart Lomiri/Unity8"
-msgstr "Herstart Lomiri/Unity8"
+#: ../qml/Main.qml:481 ../qml/Main.qml:493
+msgid "Please reboot to enable the indicator"
+msgstr "Herstart om de indicator te gebruiken"
 
-#: ../qml/Main.qml:474
+#: ../qml/Main.qml:486
 msgid "Failed to install"
 msgstr "De indicator kan niet worden toegevoegd"
 
-#: ../qml/Main.qml:481
+#: ../qml/Main.qml:493
 msgid "Successfully uninstalled!"
 msgstr "De indicator is verwijderd!"
 
-#: ../qml/Main.qml:486
+#: ../qml/Main.qml:498
 msgid "Failed to uninstall"
 msgstr "De indicator kan niet worden verwijderd"
+
+#~ msgid "Restart Lomiri/Unity8"
+#~ msgstr "Herstart Lomiri/Unity8"
+
+#~ msgid "Restart Lomiri"
+#~ msgstr "Lomiri herstarten"
+
+#~ msgid "Do you want to restart Lomiri now?"
+#~ msgstr "Wil je Lomiri nu herstarten?"
+
+#~ msgid "All currently open apps will be closed."
+#~ msgstr "Alle geopende apps worden afgesloten."
+
+#~ msgid "Save all your work before continuing!"
+#~ msgstr "Sla je werk op voordat je doorgaat!"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"
